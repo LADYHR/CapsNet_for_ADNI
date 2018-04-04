@@ -15,4 +15,5 @@ batch data.
 
 import tensorflow as tf
 
-def get_batch_data():
+def get_batch_data(dataset, batch_size, num_threads):
+	pass
