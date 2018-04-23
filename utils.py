@@ -35,9 +35,13 @@ def read_and_decode(filename):
 	return img, label
 
 def get_batch_data(dataset, batch_size, num_threads):
-	pass
-
-if __name__ == "__main__":
+	print("The dataset is：" + dataset)
 	img, label = read_and_decode("train.tfrecords")
-	print(img, label)
-	print("Finished!")
+	data_queues = tf.train.slice_input_producer([img, label])
+	X, Y = tf.train.shuffle_batch(data_queues,num_threads=num_threads,
+								  batch_size=batch_size,
+								  capacity=batch_size * 64,
+								  min_after_dequeue=batch_size * 32,
+								  allow_smaller_final_batch=False)
+	return(X, Y)
+

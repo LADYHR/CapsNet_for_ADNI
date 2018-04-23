@@ -20,16 +20,18 @@ import tensorflow as tf
 from tqdm import tqdm
 
 from config import cfg
-from utils import load_data
+#  from utils import load_data
 from CapsNet import CapsNet
 
-def main():
+def main(_):
 	tf.logging.info('Loading Graph...')
 	label_num = 3
 	model = CapsNet()
 	tf.logging.info('Graph loaded!')
+	print("Finished!")
 
 
 if __name__ == "__main__":
 	tf.app.run()
+
 

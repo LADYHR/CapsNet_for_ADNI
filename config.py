@@ -38,7 +38,7 @@ flags.DEFINE_float('stddev',0.01,'stddev for W initializer')
 ############################
 flags.DEFINE_string('dataset','ADNI1_1.5T','the name of dataset [ADNI1_1.5T]')
 flags.DEFINE_boolean('is_training',True,'train or predict phase')
-flags.DEFINE_integer('num_threads',8,'number of threads of enqueueing examples')
+flags.DEFINE_integer('num_threads', 8, 'number of threads of enqueueing examples')
 flags.DEFINE_string('logdir','logdir','logs directory')
 flags.DEFINE_integer('train_summary_freq',100,'the frequency of saving train summary(step)')
 flags.DEFINE_integer('test_summary_freq',500,'the frequency of saving test summary(step)')
