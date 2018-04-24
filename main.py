@@ -28,6 +28,7 @@ def main(_):
 	label_num = 3
 	model = CapsNet()
 	tf.logging.info('Graph loaded!')
+	sv = tf.train.Supervisor(graph=model.graph, logdir=cfg.logdir, save_model_secs=0)
 	print("Finished!")
 
 

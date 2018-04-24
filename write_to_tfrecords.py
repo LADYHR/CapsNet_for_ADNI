@@ -18,7 +18,8 @@ import os
 from PIL import Image
 
 
-rootpath = "C:\\Users\\LADYHR\\Git_Repository\\CapsNet_for_ADNI\\TEST\\Axial_45"
+# rootpath = "C:\\Users\\LADYHR\\Git_Repository\\CapsNet_for_ADNI\\TEST\\Axial_45"
+rootpath = "C:\\Users\\Hua Rui\\Git_Repository\\CapsNet_for_ADNI\\TEST\\Axial_45"
 '''
 AD -- img1.png
       img2.png
@@ -39,6 +40,9 @@ for index, name in enumerate(classes, start=1):
     for img_file in os.listdir(class_path):
         img_path = os.path.join(class_path, img_file)
         img = Image.open(img_path)
+        w, h = img.size
+        img = img.resize((91, 109))
+        # img.show()
         img_raw = img.tobytes()
         print(index, img_raw)
         example = tf.train.Example(features=tf.train.Features(feature={
@@ -46,6 +50,7 @@ for index, name in enumerate(classes, start=1):
             "img_raw": tf.train.Feature(bytes_list=tf.train.BytesList(value=[img_raw]))}))  # 定义数据格式中的数据
         writer.write(example.SerializeToString())  # 序列化为字符串
 writer.close()
+print("Finished!")
 
 
 

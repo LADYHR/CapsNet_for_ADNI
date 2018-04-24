@@ -24,7 +24,7 @@ cfg = tf.app.flags.FLAGS  # get corresponding argument
 # for separate margin loss
 flags.DEFINE_float('m_plus',0.9,'the parameter of m_plus')
 flags.DEFINE_float('m_minus',0.1,'the parameter of m_minus')
-flags.DEFINE_float('lambda',0.5,'down weight of the loss for absent digit classes')
+flags.DEFINE_float('lambdal',0.5,'down weight of the loss for absent digit classes')
 
 # for training
 flags.DEFINE_integer('batch_size',64,'batch_size')
