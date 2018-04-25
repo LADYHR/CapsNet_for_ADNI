@@ -59,10 +59,10 @@ def get_batch_data(dataset, batch_size, num_threads):
 
 
 if __name__ == "__main__":
-	# img, label = read_and_decode("train.tfrecords")
+	img, label = read_and_decode("train.tfrecords")
 	# # img, label = simple_read("train.tfrecords")
-	# img_batch, label_batch = tf.train.shuffle_batch([img, label],
-	# 												batch_size=30, capacity=2000,
-	# 												min_after_dequeue=1000)
+	img_batch, label_batch = tf.train.shuffle_batch([img, label],
+													batch_size=30, capacity=2000,
+													min_after_dequeue=1000)
 
 	print("Finished!")

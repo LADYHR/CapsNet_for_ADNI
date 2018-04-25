@@ -23,13 +23,25 @@ from config import cfg
 #  from utils import load_data
 from CapsNet import CapsNet
 
+
+def train(model, supervisor, num_label):
+
+
+
 def main(_):
 	tf.logging.info('Loading Graph...')
-	label_num = 3
+	num_label = 3
 	model = CapsNet()
 	tf.logging.info('Graph loaded!')
 	sv = tf.train.Supervisor(graph=model.graph, logdir=cfg.logdir, save_model_secs=0)
-	print("Finished!")
+	if cfg.is_training:
+		tf.logging.info('Start Training...')
+		train(model, sv, num_label)
+		tf.logging.info('Train done!')
+	else:
+		evaluation(model, sv, num_label)
+		tf.logging.info('Test done!')
+	print("Main programming finished!")
 
 
 if __name__ == "__main__":
