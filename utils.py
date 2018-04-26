@@ -52,8 +52,8 @@ def get_batch_data(dataset, batch_size, num_threads):
 	# data_queues = tf.train.slice_input_producer([img, label])
 	X, Y = tf.train.shuffle_batch([img, label],num_threads=num_threads,
 								  batch_size=batch_size,
-								  capacity=batch_size * 64,
-								  min_after_dequeue=batch_size * 32,
+								  capacity=1000,
+								  min_after_dequeue=batch_size * 1,
 								  allow_smaller_final_batch=False)
 	return X, Y
 
@@ -62,7 +62,7 @@ if __name__ == "__main__":
 	img, label = read_and_decode("train.tfrecords")
 	# # img, label = simple_read("train.tfrecords")
 	img_batch, label_batch = tf.train.shuffle_batch([img, label],
-													batch_size=30, capacity=2000,
+													batch_size=64, capacity=2000,
 													min_after_dequeue=1000)
 
 	print("Finished!")
