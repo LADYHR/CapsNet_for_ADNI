@@ -45,14 +45,14 @@ def save_to():
         fd_loss.write('step,loss\n')
         fd_val_acc = open(val_acc, 'w')
         fd_val_acc.write('step,val_acc\n')
-        return(fd_train_acc, fd_loss, fd_val_acc)
+        return fd_train_acc, fd_loss, fd_val_acc
     else:
         test_acc = cfg.results + '/test_acc.csv'
         if os.path.exists(test_acc):
             os.remove(test_acc)
         fd_test_acc = open(test_acc, 'w')
         fd_test_acc.write('test_acc\n')
-        return(fd_test_acc)
+        return fd_test_acc
 
 
 def train(model, supervisor, num_label):
@@ -104,7 +104,6 @@ def train(model, supervisor, num_label):
 		fd_val_acc.close()
 		fd_train_acc.close()
 		fd_loss.close()
-
 
 
 def main(_):
